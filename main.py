@@ -55,7 +55,8 @@ while(sair!='s'):
     elif(opcao=='2'):
         input('Aperte qualquer tecla quando o byte for transmitido.')
         line = ser.read()          #Lê 1 byte
-        line2=line.decode()
+        #line2=line.decode()       #Valido para utf-8
+        line2=chr(int.from_bytes(line, byteorder='big'))
         print('O caractere recebido foi:'+str(line2))
         print('Correspondente ao decimal:'+str(int.from_bytes(line, byteorder='big')))
     sair=input('Deseja sair do programa?[s/n]')
